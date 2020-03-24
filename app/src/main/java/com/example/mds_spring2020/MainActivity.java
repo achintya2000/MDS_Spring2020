@@ -2,6 +2,11 @@ package com.example.mds_spring2020;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,38 +19,44 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
 public class MainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toolbar toolbar = findViewById(R.id.main_toolbar);
-        //setActionBar(toolbar);
+        setUpNavigation();
+//        bottomNavigationView = findViewById(R.id.bottomNav);
 
-//        Button addBtn = findViewById(R.id.addBtn);
-//        addBtn.setOnClickListener(new View.OnClickListener() {
+//        if (savedInstanceState == null){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new MainFragment());
+//        }
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 //            @Override
-//            public void onClick(View v) {
-//                EditText editText1 = findViewById(R.id.editText1);
-//                EditText editText2 = findViewById(R.id.editText2);
-//                TextView result = findViewById(R.id.textView);
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 //
-//                int num1 = Integer.parseInt(editText1.getText().toString());
-//                int num2 = Integer.parseInt(editText2.getText().toString());
+//                Fragment fragment = null;
 //
-//                result.setText(num1 + num2 + "");
-//            }
-//        });
-
-//        Button secondActivityBtn = findViewById(R.id.nextActivityBtn);
-//        secondActivityBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent startIntent = new Intent(getApplicationContext(), SecondActivity.class);
-//                startActivity(startIntent);
-//
+//                switch (menuItem.getItemId()){
+//                    case R.id.home_dest:
+//                        fragment = new MainFragment();
+//                        break;
+//                    case R.id.settings_dest:
+//                        fragment = new settings();
+//                        break;
+//                    case R.id.addcomm_dest:
+//                        fragment = null;
+//                        break;
+//                }
+//                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, fragment).commit();
+//                return true;
 //            }
 //        });
     }
@@ -56,12 +67,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.settings_dest) {
-            Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
+    private void setUpNavigation() {
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.my_nav_host_fragment);
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());
     }
+
 }
