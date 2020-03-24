@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.mds_spring2020.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/toSettings"
+            app:destination="@id/settings" />
+        <action
+            android:id="@+id/toUHF"
+            app:destination="@id/uhf" />
+        <action
+            android:id="@+id/toVHF"
+            app:destination="@id/vhf" />
+        <action
+            android:id="@+id/toMapView"
+            app:destination="@id/mapsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.mds_spring2020.settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/uhf"
+        android:name="com.example.mds_spring2020.uhf"
+        android:label="fragment_uhf"
+        tools:layout="@layout/fragment_uhf" />
+    <fragment
+        android:id="@+id/vhf"
+        android:name="com.example.mds_spring2020.vhf"
+        android:label="fragment_vhf"
+        tools:layout="@layout/fragment_vhf" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.mds_spring2020.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
+</navigation>
