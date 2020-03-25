@@ -90,6 +90,7 @@ public class uhf extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
         map = googleMap;
+        map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         addHeatMap();
     }
 
