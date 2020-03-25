@@ -32,33 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setUpNavigation();
-//        bottomNavigationView = findViewById(R.id.bottomNav);
-
-//        if (savedInstanceState == null){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new MainFragment());
-//        }
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//
-//                Fragment fragment = null;
-//
-//                switch (menuItem.getItemId()){
-//                    case R.id.home_dest:
-//                        fragment = new MainFragment();
-//                        break;
-//                    case R.id.settings_dest:
-//                        fragment = new settings();
-//                        break;
-//                    case R.id.addcomm_dest:
-//                        fragment = null;
-//                        break;
-//                }
-//                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, fragment).commit();
-//                return true;
-//            }
-//        });
     }
 
     @Override
