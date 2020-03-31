@@ -7,4 +7,5 @@
     <string name="greenPrimary">#10D4A3</string>
     <string name="greenPrimayDark">#149776</string>
     <string name="addComm">Add Comm Method Details</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>
