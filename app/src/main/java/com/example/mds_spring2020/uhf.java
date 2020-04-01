@@ -91,6 +91,11 @@ public class uhf extends Fragment implements OnMapReadyCallback {
         MapsInitializer.initialize(getContext());
         map = googleMap;
         map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+
+        LatLng ftBragg = new LatLng(35.1415, -79.0080);
+        map.addMarker(new MarkerOptions().position(ftBragg).title("Fort Bragg"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(ftBragg));
+        
         addHeatMap();
     }
 
