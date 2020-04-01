@@ -14,11 +14,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
@@ -75,21 +77,39 @@ public class MainFragment extends Fragment {
 
     private void CreateCardView() {
         CardView newComm = new CardView(getActivity().getApplicationContext());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         newComm.setLayoutParams(layoutParams);
         newComm.setCardBackgroundColor(getResources().getColor(R.color.redPrimary));
         newComm.setContentPadding(getResources().getDimensionPixelSize(R.dimen.cardPadding), getResources().getDimensionPixelSize(R.dimen.cardPadding), getResources().getDimensionPixelSize(R.dimen.cardPadding), getResources().getDimensionPixelSize(R.dimen.cardPadding));
-        newComm.setRadius(15);
+        newComm.setRadius(getResources().getDimensionPixelSize(R.dimen.cardRadius));
+
+        LinearLayout textWrap = new LinearLayout(getActivity().getApplicationContext());
+        textWrap.setGravity(Gravity.CENTER_VERTICAL);
 
         TextView newText = new TextView(getActivity().getApplicationContext());
-        newText.setText("YEET");
+        newText.setText(sharedViewModel.getName().getValue());
         newText.setTextColor(Color.WHITE);
 
-        newComm.addView(newText);
+        textWrap.addView(newText);
+        newComm.addView(textWrap);
+
+        LinearLayout wrapper = new LinearLayout(getActivity().getApplicationContext());
+        wrapper.setGravity(Gravity.RIGHT);
+
+        ImageButton newButton = new ImageButton(getActivity().getApplicationContext());
+        LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        buttonLayoutParams.gravity = Gravity.TOP;
+        newButton.setLayoutParams(buttonLayoutParams);
+        newButton.setImageResource(R.drawable.ic_keyboard_arrow_right_black_24dp);
+        newButton.setBackground(null);
+        newButton.setScaleType(ImageView.ScaleType.FIT_END);
+
+        wrapper.addView(newButton);
+        newComm.addView(wrapper);
 
         Space space = new Space(getActivity().getApplicationContext());
-        ViewGroup.LayoutParams spaceLayout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.space));
+        LinearLayout.LayoutParams spaceLayout = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.space));
 
         linearLayout.addView(space, spaceLayout);
 

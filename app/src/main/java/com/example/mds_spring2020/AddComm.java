@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
@@ -24,6 +25,7 @@ public class AddComm extends Fragment {
     View mView;
     Fragment mainFragment;
     LinearLayout linearLayout;
+    String selectedNewComm = "";
 
     private SharedViewModel sharedViewModel;
 
@@ -36,7 +38,8 @@ public class AddComm extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_comm, container, false);
+        mView =  inflater.inflate(R.layout.fragment_add_comm, container, false);
+        return mView;
     }
 
     @Override
@@ -44,6 +47,30 @@ public class AddComm extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+        RadioGroup radioGroup = mView.findViewById(R.id.radioGroup);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId) {
+                    case R.id.radio_UHF:
+                        // switch to fragment 1
+                        selectedNewComm = "UHF";
+                        break;
+                    case R.id.radio_VHF:
+                        // Fragment 2
+                        selectedNewComm = "VHF";
+                        break;
+                    case R.id.radio_HF:
+                        selectedNewComm = "HF";
+                        break;
+                    case R.id.radio_SATCOM:
+                        selectedNewComm = "SATCOM";
+                        break;
+                }
+            }
+        });
 
         //linearLayout = getView().findViewById(R.id.mainFragmentLinearLayout);
         //linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -59,7 +86,7 @@ public class AddComm extends Fragment {
         addComm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedViewModel.setName("asdf");
+                sharedViewModel.setName(selectedNewComm);
             }
         });
     }

@@ -8,12 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainFragment">
 
-    <Button
-        android:id="@+id/addCommBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp" />
