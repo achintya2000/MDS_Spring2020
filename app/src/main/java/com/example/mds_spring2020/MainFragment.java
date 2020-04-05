@@ -64,15 +64,15 @@ public class MainFragment extends Fragment {
         vhfBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toVHF));
 
         linearLayout = mView.findViewById(R.id.mainFragmentLinearLayout);
-//        linearLayout.setOrientation(LinearLayout.VERTICAL);
-//
-//        Button addComm = mView.findViewById(R.id.addCommBtn);
-//        addComm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CreateCardView();
-//            }
-//        });
+
+        Button removeBtn = mView.findViewById(R.id.removeBtn);
+        removeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeView(mView.findViewById(R.id.vhfCardView));
+            }
+        });
+
     }
 
     private void CreateCardView() {
